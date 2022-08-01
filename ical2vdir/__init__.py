@@ -107,8 +107,6 @@ def _write_event(event: icalendar.cal.Event, path: pathlib.Path) -> None:
         # python3.5 expects Union[bytes, str]
         if os.path.isfile(temp_path) and os.path.isdir(str(path)):
             raise IsADirectoryError
-        elif os.path.isdir(temp_path) and os.path.isfile(str(path)):
-            raise NotADirectoryError
         else:
             shutil.copy(temp_path, str(path))
             os.remove(temp_path)
